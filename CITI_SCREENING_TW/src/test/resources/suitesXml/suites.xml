@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Final Suite Result">
+
+	<listeners>
+		<listener class-name="com.test.listners.utils.ListenerClass" />
+	</listeners>
+	<suite-files>
+		<suite-file path="ChromBrowserSuite.xml" />
+		<!-- <suite-file path="FirefoxBrowserSuite.xml" /> -->
+	</suite-files>
+</suite>

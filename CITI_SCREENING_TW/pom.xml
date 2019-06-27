@@ -1,0 +1,276 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>CITI_SCREENING_TW_TEST_AUTOMATION</groupId>
+	<artifactId>CITITEST</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<name>CITI_SCREENING_TW</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<mojo-exec-maven-plugin>1.5.0</mojo-exec-maven-plugin>
+		<testSuiteFile>testng.xml</testSuiteFile>
+		<sourceVersion>1.7</sourceVersion>
+		<targetVersion>1.7</targetVersion>
+		<lombok>1.16.4</lombok>
+		<slf4jVersion>1.7.21</slf4jVersion>
+		<joda-time>2.5</joda-time>
+		<test.results.dir>test-results</test.results.dir>
+		<maven-resource-plugin>3.0.1</maven-resource-plugin>
+		<maven-compiler-plugin>3.5.0</maven-compiler-plugin>
+		<run.time>${maven.build.timestamp}</run.time>
+		<resource.dir>${project.basedir}/resources</resource.dir>
+		<output.dir>${test.results.dir}/${run.time}</output.dir>
+		<maven.build.timestamp.format>dd_MMM_yyyy_hh_mm_aa</maven.build.timestamp.format>
+		<testng.report.title>CITI SCREENING_TW</testng.report.title>
+	</properties>
+	<profiles>
+		<profile>
+			<id>profile-1</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<maven.test.failure.ignore>true</maven.test.failure.ignore>
+				<profile.path>/profiles/dev/config.properties</profile.path>
+			</properties>
+			<build>
+
+				<plugins>
+					<plugin>
+						<artifactId>maven-clean-plugin</artifactId>
+						<version>2.6.0</version>
+						<configuration>
+							<filesets>
+								<fileset>
+									<directory>${project.basedir}/src/test/reports/</directory>
+								</fileset>
+							</filesets>
+						</configuration>
+					</plugin>
+					<plugin>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<version>3.5.1</version>
+						<configuration>
+							<fork>true</fork>
+							<executable>C:\Program Files\Java\jdk1.8.0_152\bin\javac.exe</executable>
+							<source>1.8</source>
+							<target>1.8</target>
+						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>2.19.1</version>
+						<executions>
+							<execution>
+								<phase>test</phase>
+								<goals>
+									<goal>test</goal>
+								</goals>
+
+								<configuration>
+									<reportsDirectory>${project.basedir}/src/test/report/</reportsDirectory>
+									<suiteXmlFiles>
+										<suiteXmlFile>testng.xml</suiteXmlFile>
+									</suiteXmlFiles>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+
+	</profiles>
+
+	<!-- Test Profiles, define URL for AUT, Browser and Test Suites -->
+
+	<!-- <profiles> <profile> <id>dev</id> <activation> <activeByDefault>true</activeByDefault> </activation> <properties> <profile.path>/profiles/dev/config.properties</profile.path> 
+		<testToRun>**/*DealsPage*.class</testToRun> </properties> </profile> <profile> <id>single</id> <properties> <profile.path>/profiles/single/config.properties</profile.path> 
+		</properties> </profile> <profile> <id>jenkins</id> <properties> <profile.path>/profiles/jenkins/config.properties</profile.path> </properties> </profile> </profiles> -->
+
+	<dependencies>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>3.4.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.10</version>
+		</dependency>
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.16</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.14</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.relevantcodes/extentreports -->
+		<dependency>
+			<groupId>com.relevantcodes</groupId>
+			<artifactId>extentreports</artifactId>
+			<version>2.41.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-chrome-driver</artifactId>
+			<version>3.4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-firefox-driver</artifactId>
+			<version>3.4.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.9</version>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok}</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- Date Time support -->
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>${joda-time}</version>
+		</dependency>
+		<!-- Date Time support -->
+		<!--Logger -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4jVersion}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>${slf4jVersion}</version>
+		</dependency>
+
+
+		<!-- Reports Dependency -->
+		<dependency>
+			<groupId>com.google.inject</groupId>
+			<artifactId>guice</artifactId>
+			<version>3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity</artifactId>
+			<version>1.7</version>
+		</dependency>
+		<dependency>
+			<groupId>org.uncommons</groupId>
+			<artifactId>reportng</artifactId>
+			<version>1.1.4</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.testng</groupId>
+					<artifactId>testng</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.velocity</groupId>
+					<artifactId>velocity</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.6.0</version>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>${project.basedir}/src/test/reports/</directory>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<fork>true</fork>
+					<executable>C:\Program Files\Java\jdk1.8.0_152\bin\javac.exe</executable>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.18.1</version>
+
+				<configuration>
+					<systemPropertyVariables>
+						<org.uncommons.reportng.escape-output>false</org.uncommons.reportng.escape-output>
+						<org.uncommons.reportng.title>Test Results</org.uncommons.reportng.title>
+					</systemPropertyVariables>
+					<properties>
+						<properties>
+							<maven.test.failure.ignore>true</maven.test.failure.ignore>
+							<profile.path>/profiles/dev/config.properties</profile.path>
+						</properties>
+						<property>
+							<name>usedefaultlisteners</name>
+							<value>false</value>
+						</property>
+						<property>
+							<name>listener</name>
+							<value>
+								com.citi.qa.reports.utils.BaseHTMLReporter
+							</value>
+						</property>
+					</properties>
+					<reportsDirectory>${project.basedir}/src/test/reports/</reportsDirectory>
+					<suiteXmlFiles>
+						<suiteXmlFile>testng.xml</suiteXmlFile>
+					</suiteXmlFiles>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${maven-resource-plugin}</version>
+				<configuration>
+					<!-- specify UTF-8, ISO-8859-1 or any other file encoding -->
+					<encoding>${utf-8}</encoding>
+					<resources>
+						<resource>
+							<directory>src/main/resources</directory>
+							<filtering>true</filtering>
+						</resource>
+					</resources>
+				</configuration>
+			</plugin>
+		</plugins>
+		<!-- Instructing the resources plugin to filter certain directories -->
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+	</build>
+
+</project>

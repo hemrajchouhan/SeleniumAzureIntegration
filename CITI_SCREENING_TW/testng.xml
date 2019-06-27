@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="CITI-CORP _TX and TW _Automation_Reports" parallel="tests" verbose="1" configfailurepolicy="continue" thread-count="2">
+
+
+	<listeners>
+		<listener class-name="com.citi.qa.listners.utils.ListenerClass" />
+	</listeners>
+
+	<test name="My First Test">
+		<classes>
+			<class name="com.citi.qa.base.NewTest" />
+		</classes>
+	</test> <!-- Test -->
+
+
+</suite>
