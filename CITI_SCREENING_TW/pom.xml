@@ -39,23 +39,13 @@
 			<build>
 
 				<plugins>
-					<plugin>
-						<artifactId>maven-clean-plugin</artifactId>
-						<version>2.6.0</version>
-						<configuration>
-							<filesets>
-								<fileset>
-									<directory>${project.basedir}/src/test/reports/</directory>
-								</fileset>
-							</filesets>
-						</configuration>
-					</plugin>
+					
 					<plugin>
 						<artifactId>maven-compiler-plugin</artifactId>
 						<version>3.5.1</version>
 						<configuration>
 							<fork>true</fork>
-							<executable>C:\Program Files\Java\jdk1.8.0_152\bin\javac.exe</executable>
+							<executable>C:\Program Files\Java\jdk1.8.0_112\bin\javac.exe</executable>
 							<source>1.8</source>
 							<target>1.8</target>
 						</configuration>
@@ -195,23 +185,13 @@
 	</dependencies>
 	<build>
 		<plugins>
-			<plugin>
-				<artifactId>maven-clean-plugin</artifactId>
-				<version>2.6.0</version>
-				<configuration>
-					<filesets>
-						<fileset>
-							<directory>${project.basedir}/src/test/reports/</directory>
-						</fileset>
-					</filesets>
-				</configuration>
-			</plugin>
+			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
 					<fork>true</fork>
-					<executable>C:\Program Files\Java\jdk1.8.0_152\bin\javac.exe</executable>
+					<executable>C:\Program Files\Java\jdk1.8.0_112\bin\javac.exe</executable>
 					<source>1.8</source>
 					<target>1.8</target>
 				</configuration>
